@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
 option csharp_namespace = "host";
 
 package company;
@@ -10,11 +13,12 @@ service company {
 
 message CreateRequest {
   string name = 1;
-  int32 id = 2;
+  google.protobuf.Int32Value id = 2;
 }
 
 message CreateReply {
   string uid = 1;
   string name = 2;
   int32 id = 3;
+  google.protobuf.Timestamp createdAt = 4;
 }

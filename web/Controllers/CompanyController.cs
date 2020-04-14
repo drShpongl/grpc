@@ -24,9 +24,7 @@ namespace web.Controllers
             });
             return new Company_Reply()
             {
-                Id = reply.Id,
-                Name = reply.Name,
-                CreatedAt = DateTime.UtcNow, // todo,
+                CreatedAt = reply.CreatedAt.ToDateTime(),
                 Uid = reply.Uid
             };
         }
@@ -39,9 +37,7 @@ namespace web.Controllers
 
         public class Company_Reply
         {
-            public int Id { get; set; }
             public string Uid { get; set; }
-            public string Name { get; set; }
             public DateTime CreatedAt { get; set; }
         }
     }

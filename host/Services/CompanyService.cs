@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 
@@ -17,8 +18,9 @@ namespace host
         {
             return Task.FromResult(new CreateReply
             {
-                Id = request.Id,
+                Id = request.Id ?? 0,
                 Name = request.Name,
+                CreatedAt = Timestamp.FromDateTime(DateTime.UtcNow),
                 Uid = Guid.NewGuid().ToString()
             });
         }
